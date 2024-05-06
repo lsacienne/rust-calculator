@@ -1,0 +1,168 @@
+import { Button, VerticalBox, GridBox, HorizontalBox } from "std-widgets.slint";
+import { CalculatorScreen } from "screen.slint";
+import { CalculatorButton } from "normalbutton.slint";
+import { OperationButton } from "operationbutton.slint";
+import { SpecialButton } from "specialbutton.slint";
+import { SquareButton } from "squarebutton.slint";
+
+export component AppWindow inherits Window {
+    min-width: 400px;
+    min-height: 600px;
+    title: "Rust Calculator";
+    icon: @image-url("icons/icon-calculator.png");
+    background: #696969;
+
+    in-out property <string> expression: "";
+    VerticalBox {
+        screen := CalculatorScreen {
+            expression: root.expression;
+        }
+
+        HorizontalBox {
+            padding: 0px;
+            GridBox {
+                padding: 0px;
+                Row {
+                    SquareButton {
+                        text: 7;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: 8;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: 9;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+                }
+
+                Row {
+                    SquareButton {
+                        text: 4;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: 5;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: 6;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+                }
+
+                Row {
+                    SquareButton {
+                        text: 1;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: 2;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: 3;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+                }
+
+                Row {
+
+                    SquareButton {
+                        text: 0;
+                        col: 1;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: "(";
+                        col: 0;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+
+                    SquareButton {
+                        text: ")";
+                        col: 2;
+                        clicked => {
+                            root.expression += self.text
+                        }
+                    }
+                }
+            }
+
+            VerticalBox {
+                padding: 0px;
+                SpecialButton {
+                    text: "C";
+                    clicked => {
+                        root.expression = ""
+                    }
+                }
+
+                OperationButton {
+                    text: "+";
+                    clicked => {
+                        root.expression += self.text
+                    }
+                }
+
+                OperationButton {
+                    text: "-";
+                    clicked => {
+                        root.expression += self.text
+                    }
+                }
+
+                OperationButton {
+                    text: "×";
+                    clicked => {
+                        root.expression += self.text
+                    }
+                }
+
+                OperationButton {
+                    text: "÷";
+                    clicked => {
+                        root.expression += self.text
+                    }
+                }
+
+                SpecialButton {
+                    text: "=";
+                    clicked => {
+                        root.expression += self.text
+                    }
+                }
+            }
+        }
+    }
+}
