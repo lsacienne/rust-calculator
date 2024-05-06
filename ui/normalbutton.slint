@@ -1,0 +1,38 @@
+import { Button } from "std-widgets.slint";
+export component CalculatorButton inherits Rectangle {
+
+    accessible-role: button;
+    min-width: 64px;
+    border-radius: 8px;
+    background: area.pressed ? pressed-color : area.has-hover ? hover-color : idle-color;
+    animate background { duration: 200ms; }
+
+    in property <color> pressed-color: #0047d4;
+    in property <color> hover-color: #41454d;
+    in property <color> idle-color: #2f3135;
+
+    in property <color> text-hover-color: #8eb3ff;
+    in property <color> text-idle-color: #ffffff;
+
+    in property <string> text: "Button";
+    in property <relative-font-size> font-size-btn: 16px;
+    private property <color> text-color: area.has-hover ? text-hover-color : text-idle-color;
+    animate text-color { duration: 200ms; }
+
+    callback clicked(string);
+
+    area := TouchArea {
+        clicked => {
+            // Delegate to the user of this element
+            root.clicked(root.text);
+        }
+    }
+
+    text-button := Text {
+        text: root.text;
+        font-family: "Roboto";
+        font-size: font-size-btn;
+        font-weight: 600;
+        color: root.text-color;
+    }
+}
