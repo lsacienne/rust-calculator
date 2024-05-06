@@ -1,0 +1,34 @@
+import { VerticalBox } from "std-widgets.slint";
+export component CalculatorScreen inherits Rectangle {
+    min-height: 64px;
+    min-width: 128px;
+    border-radius: 5px;
+    background: #23262a;
+
+    in property <string> expression: "50×60/(70 + 40)";
+    in property <string> result: "1515";
+    private property <color> text-color: #d0d2dc;
+
+    Text {
+        width: parent.width * 0.8;
+        height: parent.height * 0.8;
+        vertical-alignment: top;
+        horizontal-alignment: left;
+        font-size: 16px;
+        text: root.expression;
+        color: root.text-color;
+        wrap: word-wrap;
+    }
+
+    Text {
+        width: parent.width * 0.8;
+        font-size: 16px;
+        font-weight: 600;
+        height: parent.height * 0.8;
+        vertical-alignment: bottom;
+        horizontal-alignment: right;
+        text: root.result;
+        color: root.text-color;
+        wrap: word-wrap;
+    }
+}
