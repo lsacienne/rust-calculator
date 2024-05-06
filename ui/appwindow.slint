@@ -13,9 +13,15 @@ export component AppWindow inherits Window {
     background: #696969;
 
     in-out property <string> expression: "";
+    in-out property <string> result: "";
+    in property <bool> is-err: false;
+
+    callback validate();
     VerticalBox {
         screen := CalculatorScreen {
             expression: root.expression;
+            result: root.result;
+            is-err: root.is-err;
         }
 
         HorizontalBox {
@@ -159,7 +165,7 @@ export component AppWindow inherits Window {
                 SpecialButton {
                     text: "=";
                     clicked => {
-                        root.expression += self.text
+                        root.validate()
                     }
                 }
             }

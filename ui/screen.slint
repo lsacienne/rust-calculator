@@ -7,6 +7,8 @@ export component CalculatorScreen inherits Rectangle {
 
     in property <string> expression: "50×60/(70 + 40)";
     in property <string> result: "1515";
+    in property <bool> is-err: false;
+    private property <color> result-color: is-err ? #d64a43 : #d0d2dc;
     private property <color> text-color: #d0d2dc;
 
     Text {
@@ -28,7 +30,7 @@ export component CalculatorScreen inherits Rectangle {
         vertical-alignment: bottom;
         horizontal-alignment: right;
         text: root.result;
-        color: root.text-color;
+        color: root.result-color;
         wrap: word-wrap;
     }
 }
